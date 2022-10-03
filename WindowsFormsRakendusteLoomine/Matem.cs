@@ -25,7 +25,7 @@ namespace WindowsFormsRakendusteLoomine
                 AutoSize = false,
                 BorderStyle = BorderStyle.FixedSingle,
                 Size = new Size(200,30),
-                Text.
+                
 
             };
             
