@@ -52,6 +52,12 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="matchingGame.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="matchingGame.Designer.cs">
+      <DependentUpon>matchingGame.cs</DependentUpon>
+    </Compile>
     <Compile Include="Matem.cs">
       <SubType>Form</SubType>
     </Compile>

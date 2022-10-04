@@ -32,9 +32,9 @@ namespace WindowsFormsRakendusteLoomine
             {
                 Name = "Timer",
                 AutoSize = false,
-                BorderStyle = BorderStyle.FixedSingle,
-                Size = new Size(80, 30),
-                Location = new Point(200, 0),
+                BorderStyle = BorderStyle.Fixed3D,
+                Size = new Size(180, 60),
+                Location = new Point(0, 0),
                 Font = new Font("Friendly", 16, FontStyle.Bold)
 
             };
@@ -99,7 +99,8 @@ namespace WindowsFormsRakendusteLoomine
                         {
                             Font = new Font("Arial", 12, FontStyle.Bold),
                             Name = mathsymbol[i],
-                            Size = new Size(50, 50),
+                            Size = new Size(50, 100),
+                            Location = new Point(100, 100),
                             DecimalPlaces = 2,
                             Minimum = -20
                         };
@@ -109,6 +110,7 @@ namespace WindowsFormsRakendusteLoomine
                     else
                     {
                         Label l = new Label { Text = text };
+                        l.Font = new Font("Friendly", 16, FontStyle.Bold);
                         tableLayoutPanel.Controls.Add(l, j, i);
                     }
                 }
@@ -120,7 +122,8 @@ namespace WindowsFormsRakendusteLoomine
         {
             timer.Start();
             timelabel.Text = "Timer: " + tik.ToString();
-            timelabel.Font = new Font("Arial", 12, FontStyle.Bold);
+            timelabel.TextAlign = ContentAlignment.MiddleCenter;
+            timelabel.Font = new Font("Arial", 16, FontStyle.Bold);
             this.Controls.Add(timelabel);
         }
         private void Timer_Tick(object sender, EventArgs e)
