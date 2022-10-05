@@ -23,18 +23,19 @@ namespace WindowsFormsRakendusteLoomine
         string text;
         public Matem()
         {
-            Text = "Math Quiz";
-            ClientSize = new Size(500, 180);
+            Name = "Matemaatika viktoriin";
+            Text = "Matemaatika viktoriin";
+            ClientSize = new Size(500, 250);
             FormBorderStyle = FormBorderStyle.Fixed3D;
             MaximizeBox = false;
 
             timelabel = new Label
             {
-                Name = "Timer",
+                Name = "Taimer",
                 AutoSize = false,
                 BorderStyle = BorderStyle.Fixed3D,
-                Size = new Size(180, 60),
-                Location = new Point(0, 0),
+                Size = new Size(190, 60),
+                Location = new Point(150, 0),
                 Font = new Font("Friendly", 16, FontStyle.Bold)
 
             };
@@ -44,13 +45,15 @@ namespace WindowsFormsRakendusteLoomine
                 ColumnCount = 5,
                 RowCount = 4,
                 Location = new Point(0, 60),
-                BackColor = Color.LightSteelBlue,
+                BackColor = Color.MediumPurple,
             };
-            Button button = new Button
+            Button button = new Button //nupp
             {
-                Text = "Start",
-                Location = new Point(200, 30),
-                Size = new Size(80, 30),
+                Text = "Alusta viktoriin",
+                Location = new Point(170, 188),
+                Size = new Size(150, 60),
+                Font = new Font("Friendly", 10)
+
             };
             timer.Enabled = true;
             button.Click += Button_Click;
@@ -121,7 +124,7 @@ namespace WindowsFormsRakendusteLoomine
         private void Button_Click(object sender, EventArgs e)
         {
             timer.Start();
-            timelabel.Text = "Timer: " + tik.ToString();
+            timelabel.Text = "Taimer: " + tik.ToString();
             timelabel.TextAlign = ContentAlignment.MiddleCenter;
             timelabel.Font = new Font("Arial", 16, FontStyle.Bold);
             this.Controls.Add(timelabel);
@@ -129,20 +132,18 @@ namespace WindowsFormsRakendusteLoomine
         private void Timer_Tick(object sender, EventArgs e)
         {
             tik++;
-            timelabel.Text = "Timer: " + tik.ToString();
+            timelabel.Text = "Taimer: " + tik.ToString();
 
             if (check_ans())
             {
                 timer.Stop();
-                MessageBox.Show("Very well", "Very good");
+                MessageBox.Show("Väga hästi", "Väga hea");
             }
         }
         public bool check_ans()
         {
-            if (intnum[0] + intnum2[0] == numericUpDown[0].Value &&
-            intnum[1] - intnum2[1] == numericUpDown[1].Value &&
-            intnum[2] * intnum2[2] == numericUpDown[2].Value &&
-            intnum[3] / intnum2[3] == numericUpDown[3].Value) { return true; }
+            if (intnum[0] + intnum2[0] == numericUpDown[0].Value && intnum[1] - intnum2[1] == numericUpDown[1].Value && intnum[2] * intnum2[2] == numericUpDown[2].Value && intnum[3] / intnum2[3] == numericUpDown[3].Value) 
+            { return true; }
             else { return false; }
         }
     }

@@ -18,7 +18,8 @@ namespace WindowsFormsRakendusteLoomine
             Application.SetCompatibleTextRenderingDefault(false);
             //Application.Run(new ImageForm());
             //Application.Run(new Matem());
-            Application.Run(new matchingGame());
+            //Application.Run(new matchingGame());
+            Application.Run(new AvaForm());
         }
     }
 }

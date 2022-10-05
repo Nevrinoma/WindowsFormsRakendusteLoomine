@@ -15,7 +15,7 @@ namespace WindowsFormsRakendusteLoomine
         public ImageForm()
         {
             Name = "ImageForm";
-            Text = "Image Viewer";
+            Text = "Pildivaatur";
             ClientSize = new Size(1250, 800);
             colorDialog1 = new ColorDialog();
             openFileDialog1 = new OpenFileDialog();
@@ -38,7 +38,7 @@ namespace WindowsFormsRakendusteLoomine
             };
             tableLayoutPanel1.Controls.Add(flowLayoutPanel1, 1, 1);
 
-            string[] btnText = { "Show a picture", "Clear the picture","Set the background color", "Close" }; 
+            string[] btnText = { "Näita pilti", "Tühjenda pilt", "Määrake taustavärv", "Sulge" }; 
             
             for (int i = 0; i < btnText.Length; i++)
             {
@@ -64,7 +64,7 @@ namespace WindowsFormsRakendusteLoomine
             checkBox1 = new CheckBox
             {
                 AutoSize = true,
-                Text = "Stretch",
+                Text = "Venitada",
                 UseVisualStyleBackColor = true,
             };
             checkBox1.CheckedChanged += new EventHandler(this.checkBox1_CheckedChanged);
@@ -83,20 +83,20 @@ namespace WindowsFormsRakendusteLoomine
         private void Action(object sender, EventArgs e)
         {
             Button nupp_sender = (Button)sender;
-            if (nupp_sender.Text == "Clear the picture")
+            if (nupp_sender.Text == "Tühjenda pilt")
             {
                 pictureBox1.Image = null;
             }
-            else if (nupp_sender.Text == "Close")
+            else if (nupp_sender.Text == "Sulge")
             {
                 Close();
             }
-            else if (nupp_sender.Text == "Set the background color")
+            else if (nupp_sender.Text == "Määrake taustavärv")
             {
                 if (colorDialog1.ShowDialog() == DialogResult.OK)
                     pictureBox1.BackColor = colorDialog1.Color;
             }
-            else if (nupp_sender.Text == "Show a picture")
+            else if (nupp_sender.Text == "Näita pilti")
             {
                 if (openFileDialog1.ShowDialog() == DialogResult.OK)
                 {
@@ -107,7 +107,7 @@ namespace WindowsFormsRakendusteLoomine
                 }
             }
         }
-        //растягивает картинку при добавление через кнопку Show a picture
+        //растягивает картинку при добавление через кнопку Näita pilti
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
             if (checkBox1.Checked)
