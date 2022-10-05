@@ -19,6 +19,9 @@ namespace WindowsFormsRakendusteLoomine
             ClientSize = new Size(300, 400);
             FormBorderStyle = FormBorderStyle.Fixed3D;
             MaximizeBox = false;
+            colorDialog1 = new ColorDialog();
+            openFileDialog1 = new OpenFileDialog();
+            pictureBox1 = new PictureBox();
             string[] btnText = { "Näita pilti", "Tühjenda pilt", "Määrake taustavärv", "Sulge" };
 
             TableLayoutPanel tableLayoutPanel1 = new TableLayoutPanel
