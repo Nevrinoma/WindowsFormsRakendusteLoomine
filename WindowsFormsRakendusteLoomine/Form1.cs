@@ -12,6 +12,8 @@ namespace WindowsFormsRakendusteLoomine
 {
     public partial class ImageForm : Form
     {
+        private Random rnd = new Random();
+
         public ImageForm()
         {
             Name = "ImageForm";
@@ -21,6 +23,7 @@ namespace WindowsFormsRakendusteLoomine
             openFileDialog1 = new OpenFileDialog();
             pictureBox1 = new PictureBox();
             checkBox1 = new CheckBox();
+            checkBox2 = new CheckBox();
             tableLayoutPanel1 = new TableLayoutPanel { ColumnCount = 2, RowCount = 2, Dock = DockStyle.Fill };
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 15F));
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 85F));
@@ -30,6 +33,10 @@ namespace WindowsFormsRakendusteLoomine
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
             Controls.Add(tableLayoutPanel1);
             
+
+
+
+
             FlowLayoutPanel flowLayoutPanel1 = new FlowLayoutPanel
             {
                 AutoSize = true,
@@ -69,6 +76,17 @@ namespace WindowsFormsRakendusteLoomine
             };
             checkBox1.CheckedChanged += new EventHandler(this.checkBox1_CheckedChanged);
 
+
+            checkBox2 = new CheckBox
+            {
+                AutoSize = true,
+                Text = "Disco",
+                UseVisualStyleBackColor = true,
+            };
+            checkBox2.CheckedChanged += new EventHandler(this.backgroundDance);
+
+
+
             openFileDialog1 = new OpenFileDialog
             {
                 Filter = "JPEG Files (*.jpg)|*.jpg|PNG Files (*.png)|*.png|BMP Files (*.bmp)|*.bmp|All file" + "s (*.*)|*.*",
@@ -78,7 +96,8 @@ namespace WindowsFormsRakendusteLoomine
             Controls.Add(tableLayoutPanel1);
             tableLayoutPanel1.Controls.Add(pictureBox1, 0, 0);
             tableLayoutPanel1.Controls.Add(checkBox1, 0, 1);
-            
+            tableLayoutPanel1.Controls.Add(checkBox2, 0, 2);
+
         }
         private void Action(object sender, EventArgs e)
         {
@@ -108,6 +127,7 @@ namespace WindowsFormsRakendusteLoomine
             }
         }
         //растягивает картинку при добавление через кнопку Näita pilti
+
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
             if (checkBox1.Checked)
@@ -115,5 +135,26 @@ namespace WindowsFormsRakendusteLoomine
             else
                 pictureBox1.SizeMode = PictureBoxSizeMode.Normal;
         }
+        Timer timer1 = new Timer();
+        
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            Random rnd = new Random();
+            int R, G, B;
+            R = rnd.Next(0, 255);
+            G = rnd.Next(0, 255);
+            B = rnd.Next(0, 255);
+            pictureBox1.BackColor=Color.FromArgb(R, G, B);
+        }
+
+        private void backgroundDance(object sender, EventArgs e)
+        {
+            timer1.Interval = 100;
+            timer1.Start();
+            timer1.Tick += timer1_Tick;
+        }
     }
+
+
+
 }

@@ -13,26 +13,59 @@ namespace WindowsFormsRakendusteLoomine
 {
     public partial class matchingGame : Form
     {
-        //Label lbl;
         TableLayoutPanel tableLayoutPanel1;
         Random rnd = new Random();
-        List<string> icons = new List<string>()
-            {
-                "!", "!", "N", "N", ",", ",", "k", "k",
-                "b", "b", "v", "v", "w", "w", "z", "z"
-            };
+        
         Label firstClicked = null;
         Label secondClicked = null;
         Timer timer1 = new Timer { Interval = 750 };
+        string[] btnText = { "lihtne", "keskmine", "raske" };
         public matchingGame()
         {
-            Name = "MatchingGame";
-            Text = "MatchingGame!";
+            Name = "PiltideMäng";
+            Text = "Piltide Mäng!";
             timer1.Tick += timer1_Tick;
 
             ClientSize = new Size(550, 550);
             FormBorderStyle = FormBorderStyle.Fixed3D;
             MaximizeBox = false;
+            
+            valik();
+            
+        }
+        private void valik()
+        {
+            
+            TableLayoutPanel tableLayoutPanel = new TableLayoutPanel
+            {
+                AutoSize = true,
+                ColumnCount = 1,
+                RowCount = 4,
+                BackColor = Color.MediumPurple,
+                Dock = DockStyle.Fill,
+                CellBorderStyle = TableLayoutPanelCellBorderStyle.Inset,
+            };
+            Controls.Add(tableLayoutPanel);
+
+            for (int i = 0; i < 3; i++)
+            {
+                tableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 25F));
+                Button btnV = new Button
+                {
+                    Text = btnText[i],
+                    UseVisualStyleBackColor = true,
+                    AutoSize = true,
+                    BackColor = Color.LightGoldenrodYellow,
+                    Dock = DockStyle.Fill,
+                };
+                btnV.Click += difficult;
+                tableLayoutPanel.Controls.Add(btnV);
+            }
+        }
+        private void difficult(object sender, EventArgs e)
+        {
+
+            this.Controls.Clear();
             tableLayoutPanel1 = new TableLayoutPanel
             {
                 ColumnCount = 4,
@@ -41,42 +74,134 @@ namespace WindowsFormsRakendusteLoomine
                 CellBorderStyle = TableLayoutPanelCellBorderStyle.Inset,
 
             };
-
-            for (int i = 0; i < 4; i++)
+            Controls.Add(tableLayoutPanel1);
+            Button nupp_sender = (Button)sender;
+            if (nupp_sender.Text == "lihtne")
             {
-                tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25F));
-                tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 25F));
-                for (int j = 0; j < 4; j++)
-                {
-
-                    Label lbl = new Label
+                List<string> icons = new List<string>()
                     {
-                        BackColor = Color.CornflowerBlue,
-                        AutoSize = false,
-                        Dock=DockStyle.Fill,
-                        TextAlign=ContentAlignment.MiddleCenter,
-                        Font = new Font("Webdings",48,FontStyle.Bold)
+                        "!", "!", "N", "N"
                     };
-                    tableLayoutPanel1.Controls.Add(lbl, i, j);
+                for (int i = 0; i < 2; i++)
+                {
+                    tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25F));
+                    tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 25F));
+                    for (int j = 0; j < 2; j++)
+                    {
+
+                        Label lbl = new Label
+                        {
+                            BackColor = Color.CornflowerBlue,
+                            AutoSize = false,
+                            Dock = DockStyle.Fill,
+                            TextAlign = ContentAlignment.MiddleCenter,
+                            Font = new Font("Webdings", 48, FontStyle.Bold)
+                        };
+                        tableLayoutPanel1.Controls.Add(lbl, i, j);
+                    }
+
                 }
+
                 
+                foreach (Control control in tableLayoutPanel1.Controls)
+                {
+                    Label iconLabel = control as Label;
+                    if (iconLabel != null)
+                    {
+                        int randomNumber = rnd.Next(icons.Count);
+                        iconLabel.Text = icons[randomNumber];
+                        icons.RemoveAt(randomNumber);
+                    }
+                    iconLabel.ForeColor = iconLabel.BackColor;
+                    iconLabel.Click += label1_Click;
+                }
+            }
+            else if (nupp_sender.Text == "keskmine")
+            {
+                List<string> icons = new List<string>()
+                {
+                    "!", "!", "N", "N", ",", ",", "k", "k",
+                    "b", "b", "v", "v", "w", "w", "z", "z"
+                };
+                for (int i = 0; i < 4; i++)
+                {
+                    tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25F));
+                    tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 25F));
+                    for (int j = 0; j < 4; j++)
+                    {
+
+                        Label lbl = new Label
+                        {
+                            BackColor = Color.CornflowerBlue,
+                            AutoSize = false,
+                            Dock = DockStyle.Fill,
+                            TextAlign = ContentAlignment.MiddleCenter,
+                            Font = new Font("Webdings", 48, FontStyle.Bold)
+                        };
+                        tableLayoutPanel1.Controls.Add(lbl, i, j);
+                    }
+
+                }
+
+                
+                foreach (Control control in tableLayoutPanel1.Controls)
+                {
+                    Label iconLabel = control as Label;
+                    if (iconLabel != null)
+                    {
+                        int randomNumber = rnd.Next(icons.Count);
+                        iconLabel.Text = icons[randomNumber];
+                        icons.RemoveAt(randomNumber);
+                    }
+                    iconLabel.ForeColor = iconLabel.BackColor;
+                    iconLabel.Click += label1_Click;
+                }
+            }
+            else if (nupp_sender.Text == "raske")
+            {
+                List<string> icons = new List<string>()
+                {
+                    "!", "!", "N", "N", ",", ",", "k", "k",
+                    "b", "b", "v", "v", "w", "w", "z", "z",
+                    "u", "u", "d", "d"
+                };
+                for (int i = 0; i < 5; i++)
+                {
+                    tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25F));
+                    tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 25F));
+                    for (int j = 0; j < 4; j++)
+                    {
+
+                        Label lbl = new Label
+                        {
+                            BackColor = Color.CornflowerBlue,
+                            AutoSize = false,
+                            Dock = DockStyle.Fill,
+                            TextAlign = ContentAlignment.MiddleCenter,
+                            Font = new Font("Webdings", 48, FontStyle.Bold)
+                        };
+                        tableLayoutPanel1.Controls.Add(lbl, i, j);
+                    }
+
+                }
+
+                
+                foreach (Control control in tableLayoutPanel1.Controls)
+                {
+                    Label iconLabel = control as Label;
+                    if (iconLabel != null)
+                    {
+                        int randomNumber = rnd.Next(icons.Count);
+                        iconLabel.Text = icons[randomNumber];
+                        icons.RemoveAt(randomNumber);
+                    }
+                    iconLabel.ForeColor = iconLabel.BackColor;
+                    iconLabel.Click += label1_Click;
+                }
             }
             
-            Controls.Add(tableLayoutPanel1);
-            foreach (Control control in tableLayoutPanel1.Controls)
-            {
-                Label iconLabel = control as Label;
-                if (iconLabel != null)
-                {
-                    int randomNumber = rnd.Next(icons.Count);
-                    iconLabel.Text = icons[randomNumber];
-                    icons.RemoveAt(randomNumber);
-                }
-                iconLabel.ForeColor = iconLabel.BackColor;
-                iconLabel.Click += label1_Click;
-            }
 
-
+            
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -139,6 +264,9 @@ namespace WindowsFormsRakendusteLoomine
             Close();
         }
 
+        private void matchingGame_Load(object sender, EventArgs e)
+        {
 
+        }
     }
 }

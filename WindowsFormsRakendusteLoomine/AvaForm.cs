@@ -19,10 +19,7 @@ namespace WindowsFormsRakendusteLoomine
             ClientSize = new Size(300, 400);
             FormBorderStyle = FormBorderStyle.Fixed3D;
             MaximizeBox = false;
-            colorDialog1 = new ColorDialog();
-            openFileDialog1 = new OpenFileDialog();
-            pictureBox1 = new PictureBox();
-            string[] btnText = { "Näita pilti", "Tühjenda pilt", "Määrake taustavärv", "Sulge" };
+            string[] btnText = { "Pildivaatur", "Matemaatika viktoriin", "Piltide Mäng", "Sulge" };
 
             TableLayoutPanel tableLayoutPanel1 = new TableLayoutPanel
             {
@@ -42,48 +39,39 @@ namespace WindowsFormsRakendusteLoomine
                 {
                     Text = btnText[i],
                     UseVisualStyleBackColor = true,
-                    AutoSize = true
+                    AutoSize = true,
+                    BackColor = Color.LightGoldenrodYellow,
+                    Dock = DockStyle.Fill,
                 };
-                //btn.Click += Action;
+                btn.Click += Action;
                 tableLayoutPanel1.Controls.Add(btn);
             }
-
-
-            
-
         }
 
         private void Action(object sender, EventArgs e)
         {
+            ImageForm ImageForm = new ImageForm();
+            Matem Matem = new Matem();
+            matchingGame matchingGame = new matchingGame();
+
             Button nupp_sender = (Button)sender;
-            if (nupp_sender.Text == "Tühjenda pilt")
+            if (nupp_sender.Text == "Pildivaatur")
             {
-                pictureBox1.Image = null;
+                ImageForm.ShowDialog();
             }
             else if (nupp_sender.Text == "Sulge")
             {
                 Close();
             }
-            else if (nupp_sender.Text == "Määrake taustavärv")
+            else if (nupp_sender.Text == "Matemaatika viktoriin")
             {
-                if (colorDialog1.ShowDialog() == DialogResult.OK)
-                    pictureBox1.BackColor = colorDialog1.Color;
+                Matem.ShowDialog();
             }
-            else if (nupp_sender.Text == "Näita pilti")
+            else if (nupp_sender.Text == "Piltide Mäng")
             {
-                if (openFileDialog1.ShowDialog() == DialogResult.OK)
-                {
-                    pictureBox1.Load(openFileDialog1.FileName);
-                    Bitmap finalImg = new Bitmap(pictureBox1.Image, pictureBox1.Width, pictureBox1.Height);
-                    pictureBox1.Image = finalImg;
-                    pictureBox1.Show();
-                }
+                matchingGame.ShowDialog();
             }
-        }
-
-        private void AvaForm_Load(object sender, EventArgs e)
-        {
-
         }
     }
+
 }

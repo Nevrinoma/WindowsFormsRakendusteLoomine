@@ -1,4 +1,6 @@
-﻿namespace WindowsFormsRakendusteLoomine
+﻿using System;
+
+namespace WindowsFormsRakendusteLoomine
 {
     partial class AvaForm
     {
@@ -40,6 +42,11 @@
             this.Load += new System.EventHandler(this.AvaForm_Load);
             this.ResumeLayout(false);
 
+        }
+
+        private void AvaForm_Load(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
         }
 
         #endregion

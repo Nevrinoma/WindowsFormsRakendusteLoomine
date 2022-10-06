@@ -23,7 +23,7 @@ namespace WindowsFormsRakendusteLoomine
         string text;
         public Matem()
         {
-            Name = "Matemaatika viktoriin";
+            Name = "MatemaatikaViktoriin";
             Text = "Matemaatika viktoriin";
             ClientSize = new Size(500, 250);
             FormBorderStyle = FormBorderStyle.Fixed3D;
@@ -58,7 +58,7 @@ namespace WindowsFormsRakendusteLoomine
             timer.Enabled = true;
             button.Click += Button_Click;
             Controls.Add(button);
-            timer.Tick += Timer_Tick;
+            
             for (int i = 0; i < 4; i++)
             {
                 tableLayoutPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25F));
@@ -124,6 +124,7 @@ namespace WindowsFormsRakendusteLoomine
         private void Button_Click(object sender, EventArgs e)
         {
             timer.Start();
+            timer.Tick += Timer_Tick;
             timelabel.Text = "Taimer: " + tik.ToString();
             timelabel.TextAlign = ContentAlignment.MiddleCenter;
             timelabel.Font = new Font("Arial", 16, FontStyle.Bold);
