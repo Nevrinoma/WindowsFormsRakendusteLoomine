@@ -149,9 +149,15 @@ namespace WindowsFormsRakendusteLoomine
 
         private void backgroundDance(object sender, EventArgs e)
         {
-            timer1.Interval = 100;
-            timer1.Start();
-            timer1.Tick += timer1_Tick;
+
+            if (checkBox2.Checked)
+            {
+                timer1.Interval = 100;
+                timer1.Start();
+                timer1.Tick += timer1_Tick;
+            }
+            else
+                timer1.Stop();
         }
     }
 

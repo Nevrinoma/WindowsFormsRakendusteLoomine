@@ -33,7 +33,7 @@ namespace WindowsFormsRakendusteLoomine
             valik();
             
         }
-        private void valik()
+        private void valik() //meetod Valik loob 3 raskusastme nuppu ja nupule klõpsamisel kutsutakse välja raskusmeetod
         {
             
             TableLayoutPanel tableLayoutPanel = new TableLayoutPanel
@@ -62,7 +62,7 @@ namespace WindowsFormsRakendusteLoomine
                 tableLayoutPanel.Controls.Add(btnV);
             }
         }
-        private void difficult(object sender, EventArgs e)
+        private void difficult(object sender, EventArgs e) 
         {
 
             this.Controls.Clear();

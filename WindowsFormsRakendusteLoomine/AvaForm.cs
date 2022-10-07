@@ -48,20 +48,20 @@ namespace WindowsFormsRakendusteLoomine
             }
         }
 
-        private void Action(object sender, EventArgs e)
+        private void Action(object sender, EventArgs e) //meetod Toiming loeb Saatja kaudu, millist nuppu vajutatakse, ja avab vormi
         {
-            ImageForm ImageForm = new ImageForm();
+            ImageForm ImageForm = new ImageForm(); //
             Matem Matem = new Matem();
             matchingGame matchingGame = new matchingGame();
 
             Button nupp_sender = (Button)sender;
             if (nupp_sender.Text == "Pildivaatur")
             {
-                ImageForm.ShowDialog();
+                ImageForm.ShowDialog(); // ava Pildivaatur
             }
             else if (nupp_sender.Text == "Sulge")
             {
-                Close();
+                Close(); //
             }
             else if (nupp_sender.Text == "Matemaatika viktoriin")
             {
