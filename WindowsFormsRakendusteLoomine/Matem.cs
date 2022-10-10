@@ -13,8 +13,8 @@ namespace WindowsFormsRakendusteLoomine
 {
     public partial class Matem : Form
     {
-        Timer timer = new Timer { Interval = 1000 };
-        NumericUpDown[] numericUpDown = new NumericUpDown[4];
+        Timer timer = new Timer { Interval = 1000 }; //taimer
+        NumericUpDown[] numericUpDown = new NumericUpDown[4];// numbriline üles alla
         Random rnd = new Random();
         TableLayoutPanel tableLayoutPanel;
         Label timelabel;
@@ -60,7 +60,7 @@ namespace WindowsFormsRakendusteLoomine
             button.Click += Button_Click;
             Controls.Add(button);
             
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < 4; i++) // tsükkel, mis loob liidese näidetega
             {
                 tableLayoutPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25F));
                 for (int j = 0; j < 5; j++)
@@ -122,7 +122,7 @@ namespace WindowsFormsRakendusteLoomine
             this.Controls.Add(tableLayoutPanel);
         }
         int tik = 0;
-        private void Button_Click(object sender, EventArgs e)
+        private void Button_Click(object sender, EventArgs e) // Nupp Klõps
         {
             timer.Start();
             timer.Tick += Timer_Tick;
@@ -131,7 +131,7 @@ namespace WindowsFormsRakendusteLoomine
             timelabel.Font = new Font("Arial", 16, FontStyle.Bold);
             this.Controls.Add(timelabel);
         }
-        private void Timer_Tick(object sender, EventArgs e)
+        private void Timer_Tick(object sender, EventArgs e)// Taimeri Linnuke
         {
             tik++;
             timelabel.Text = "Taimer: " + tik.ToString();
@@ -145,7 +145,7 @@ namespace WindowsFormsRakendusteLoomine
 
 
 
-        public bool check_ans()
+        public bool check_ans() //kontrollige vastuseid
         {
             if (intnum[0] + intnum2[0] == numericUpDown[0].Value && intnum[1] - intnum2[1] == numericUpDown[1].Value && intnum[2] * intnum2[2] == numericUpDown[2].Value && intnum[3] / intnum2[3] == numericUpDown[3].Value) 
             { return true; }

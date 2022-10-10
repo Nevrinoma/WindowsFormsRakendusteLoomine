@@ -59,7 +59,7 @@ namespace WindowsFormsRakendusteLoomine
                 flowLayoutPanel1.Controls.Add(btn);
             }
 
-            pictureBox1 = new PictureBox
+            pictureBox1 = new PictureBox //pildikast loomine
             {
                 BorderStyle = BorderStyle.Fixed3D,
                 Dock = DockStyle.Fill,
@@ -68,7 +68,7 @@ namespace WindowsFormsRakendusteLoomine
             };
 
             tableLayoutPanel1.SetColumnSpan(pictureBox1, 2);
-            checkBox1 = new CheckBox
+            checkBox1 = new CheckBox //ruut loomine
             {
                 AutoSize = true,
                 Text = "Venitada",
@@ -77,7 +77,7 @@ namespace WindowsFormsRakendusteLoomine
             checkBox1.CheckedChanged += new EventHandler(this.checkBox1_CheckedChanged);
 
 
-            checkBox2 = new CheckBox
+            checkBox2 = new CheckBox //ruut loomine
             {
                 AutoSize = true,
                 Text = "Disco",
@@ -87,7 +87,7 @@ namespace WindowsFormsRakendusteLoomine
 
 
 
-            openFileDialog1 = new OpenFileDialog
+            openFileDialog1 = new OpenFileDialog // Failidialoog loomine
             {
                 Filter = "JPEG Files (*.jpg)|*.jpg|PNG Files (*.png)|*.png|BMP Files (*.bmp)|*.bmp|All file" + "s (*.*)|*.*",
                 Title = "Select a picture file"
@@ -99,7 +99,7 @@ namespace WindowsFormsRakendusteLoomine
             tableLayoutPanel1.Controls.Add(checkBox2, 0, 2);
 
         }
-        private void Action(object sender, EventArgs e)
+        private void Action(object sender, EventArgs e) // meetod tegevus võtab väärtuse Sender ja käivitab valitud toimingu
         {
             Button nupp_sender = (Button)sender;
             if (nupp_sender.Text == "Tühjenda pilt")
@@ -126,7 +126,7 @@ namespace WindowsFormsRakendusteLoomine
                 }
             }
         }
-        //растягивает картинку при добавление через кнопку Näita pilti
+        //venitab pilti lisades läbi nupu Näita pilti
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
@@ -137,7 +137,7 @@ namespace WindowsFormsRakendusteLoomine
         }
         Timer timer1 = new Timer();
         
-        private void timer1_Tick(object sender, EventArgs e)
+        private void timer1_Tick(object sender, EventArgs e) //meetod, mida teostab iga taimeri linnuke
         {
             Random rnd = new Random();
             int R, G, B;
@@ -147,7 +147,7 @@ namespace WindowsFormsRakendusteLoomine
             pictureBox1.BackColor=Color.FromArgb(R, G, B);
         }
 
-        private void backgroundDance(object sender, EventArgs e)
+        private void backgroundDance(object sender, EventArgs e) //tagumise tausta värvi muutmine
         {
 
             if (checkBox2.Checked)

@@ -21,7 +21,7 @@ namespace WindowsFormsRakendusteLoomine
         Timer timer1 = new Timer { Interval = 750 };
         string[] btnText = { "lihtne", "keskmine", "raske" };
 
-        public Color bgcolor;
+        public Color bgcolor; // loon klassi objekti tagaplaan värv tulevikuks kasutamine meetodis Värv
 
         public matchingGame()
         {
@@ -69,8 +69,8 @@ namespace WindowsFormsRakendusteLoomine
         {
             if (colorDialog1.ShowDialog() == DialogResult.OK)
             {
-               bgcolor = colorDialog1.Color;
-           
+               bgcolor = colorDialog1.Color; // taust
+
             }
             return bgcolor;
             
@@ -91,7 +91,7 @@ namespace WindowsFormsRakendusteLoomine
             Button nupp_sender = (Button)sender;
             if (nupp_sender.Text == "lihtne")
             {
-                List<string> icons = new List<string>()
+                List<string> icons = new List<string>()//nimekiri ikoonidega mängu jaoks
                     {
                         "!", "!", "N", "N"
                     };
@@ -133,12 +133,12 @@ namespace WindowsFormsRakendusteLoomine
             }
             else if (nupp_sender.Text == "keskmine")
             {
-                List<string> icons = new List<string>()
+                List<string> icons = new List<string>()//nimekiri ikoonidega mängu jaoks
                 {
                     "!", "!", "N", "N", ",", ",", "k", "k",
                     "b", "b", "v", "v", "w", "w", "z", "z"
                 };
-                Color eeee = varv();
+                Color taustVarv = varv();
                 for (int i = 0; i < 4; i++)
                 {
                     tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25F));
@@ -148,7 +148,7 @@ namespace WindowsFormsRakendusteLoomine
 
                         Label lbl = new Label
                         {
-                            BackColor = eeee,
+                            BackColor = taustVarv,
                             AutoSize = false,
                             Dock = DockStyle.Fill,
                             TextAlign = ContentAlignment.MiddleCenter,
@@ -176,7 +176,7 @@ namespace WindowsFormsRakendusteLoomine
             else if (nupp_sender.Text == "raske")
             {
                 Color eeee = varv();
-                List<string> icons = new List<string>()
+                List<string> icons = new List<string>()//nimekiri ikoonidega mängu jaoks
                 {
                     "!", "!", "N", "N", ",", ",", "k", "k",
                     "b", "b", "v", "v", "w", "w", "z", "z",
@@ -218,7 +218,7 @@ namespace WindowsFormsRakendusteLoomine
             }
         }
 
-        private void label1_Click(object sender, EventArgs e)
+        private void label1_Click(object sender, EventArgs e)// sildi klõps
         {
             if (timer1.Enabled == true)
                 return;
@@ -244,7 +244,7 @@ namespace WindowsFormsRakendusteLoomine
         }
 
 
-        private void timer1_Tick(object sender, EventArgs e)
+        private void timer1_Tick(object sender, EventArgs e)// taimeri linnuke
         {
             if (firstClicked.Text == secondClicked.Text)
             {
@@ -261,7 +261,7 @@ namespace WindowsFormsRakendusteLoomine
             timer1.Stop();
             CheckForWinner();
         }
-        private void CheckForWinner()
+        private void CheckForWinner()// Kontrollige Võitjat
         {
             foreach (Control control in tableLayoutPanel1.Controls)
             {
@@ -276,11 +276,6 @@ namespace WindowsFormsRakendusteLoomine
 
             MessageBox.Show("Sa sobitasid kõik ikoonid!", "Palju õnne");
             Close();
-        }
-
-        private void matchingGame_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }
