@@ -159,6 +159,24 @@ namespace WindowsFormsRakendusteLoomine
             else
                 timer1.Stop();
         }
+
+        private void InitializeComponent()
+        {
+            this.SuspendLayout();
+            // 
+            // ImageForm
+            // 
+            this.ClientSize = new System.Drawing.Size(284, 261);
+            this.Name = "ImageForm";
+            this.Load += new System.EventHandler(this.ImageForm_Load);
+            this.ResumeLayout(false);
+
+        }
+
+        private void ImageForm_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 
 

@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WMPLib;
 
 namespace WindowsFormsRakendusteLoomine
 {
@@ -22,6 +24,7 @@ namespace WindowsFormsRakendusteLoomine
         int[] intnum2 = new int[4];
         string[] mathsymbol = new string[4] { "+", "-", "*", "/" };
         string text;
+        ComboBox mybox;
         public Matem()
         {
             Name = "MatemaatikaViktoriin";
@@ -51,15 +54,27 @@ namespace WindowsFormsRakendusteLoomine
             Button button = new Button //nupp
             {
                 Text = "Alusta viktoriin",
-                Location = new Point(170, 188),
+                Location = new Point(20, 188),
                 Size = new Size(150, 60),
                 Font = new Font("Friendly", 10)
 
             };
+            Button musicBtn = new Button
+            {
+
+                Text = "Ava musika ugu",
+                Location = new Point(200, 188),
+                Size = new Size(150, 60),
+                Font = new Font("Friendly", 10)
+            };
             timer.Enabled = true;
             button.Click += Button_Click;
             Controls.Add(button);
-            
+            musicBtn.Click += muusika;
+            Controls.Add(musicBtn);
+
+
+
             for (int i = 0; i < 4; i++) // tsükkel, mis loob liidese näidetega
             {
                 tableLayoutPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25F));
@@ -122,6 +137,18 @@ namespace WindowsFormsRakendusteLoomine
             this.Controls.Add(tableLayoutPanel);
         }
         int tik = 0;
+
+        private void muusika()
+        {
+            string[] files = Directory.GetFiles(@"..\..\muusika", "*.wav");
+            foreach (var item in files)
+            {
+                string[] abc = item.Split('\\');
+                mybox.Items.Add(abc[abc.Length - 1]);
+            }
+        }
+        WindowsMediaPlayer musika = new WindowsMediaPlayer();
+
         private void Button_Click(object sender, EventArgs e) // Nupp Klõps
         {
             timer.Start();
@@ -145,11 +172,17 @@ namespace WindowsFormsRakendusteLoomine
 
 
 
+
         public bool check_ans() //kontrollige vastuseid
         {
             if (intnum[0] + intnum2[0] == numericUpDown[0].Value && intnum[1] - intnum2[1] == numericUpDown[1].Value && intnum[2] * intnum2[2] == numericUpDown[2].Value && intnum[3] / intnum2[3] == numericUpDown[3].Value) 
             { return true; }
             else { return false; }
+        }
+
+        private void Matem_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

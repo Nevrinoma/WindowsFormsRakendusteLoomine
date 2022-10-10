@@ -65,6 +65,11 @@ namespace WindowsFormsRakendusteLoomine
                 tableLayoutPanel.Controls.Add(btnV);
             }
         }
+
+
+
+
+
         public Color varv()
         {
             if (colorDialog1.ShowDialog() == DialogResult.OK)
@@ -138,7 +143,7 @@ namespace WindowsFormsRakendusteLoomine
                     "!", "!", "N", "N", ",", ",", "k", "k",
                     "b", "b", "v", "v", "w", "w", "z", "z"
                 };
-                Color taustVarv = varv();
+                Color eeee = varv();
                 for (int i = 0; i < 4; i++)
                 {
                     tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25F));
@@ -148,7 +153,7 @@ namespace WindowsFormsRakendusteLoomine
 
                         Label lbl = new Label
                         {
-                            BackColor = taustVarv,
+                            BackColor = eeee,
                             AutoSize = false,
                             Dock = DockStyle.Fill,
                             TextAlign = ContentAlignment.MiddleCenter,
@@ -276,6 +281,11 @@ namespace WindowsFormsRakendusteLoomine
 
             MessageBox.Show("Sa sobitasid kõik ikoonid!", "Palju õnne");
             Close();
+        }
+
+        private void matchingGame_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
