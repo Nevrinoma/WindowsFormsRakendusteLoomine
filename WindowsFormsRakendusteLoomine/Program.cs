@@ -19,7 +19,7 @@ namespace WindowsFormsRakendusteLoomine
             //Application.Run(new ImageForm());
             //Application.Run(new Matem());
             //Application.Run(new matchingGame());
-            Application.Run(new AvaForm());
+            Application.Run(new AvaForm()); //käivitab põhivormi
         }
     }
 }

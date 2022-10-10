@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -141,6 +142,9 @@ namespace WindowsFormsRakendusteLoomine
                 MessageBox.Show("Väga hästi", "Väga hea");
             }
         }
+
+
+
         public bool check_ans()
         {
             if (intnum[0] + intnum2[0] == numericUpDown[0].Value && intnum[1] - intnum2[1] == numericUpDown[1].Value && intnum[2] * intnum2[2] == numericUpDown[2].Value && intnum[3] / intnum2[3] == numericUpDown[3].Value) 

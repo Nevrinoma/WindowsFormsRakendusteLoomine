@@ -24,7 +24,7 @@ namespace WindowsFormsRakendusteLoomine
             pictureBox1 = new PictureBox();
             checkBox1 = new CheckBox();
             checkBox2 = new CheckBox();
-            tableLayoutPanel1 = new TableLayoutPanel { ColumnCount = 2, RowCount = 2, Dock = DockStyle.Fill };
+            tableLayoutPanel1 = new TableLayoutPanel { ColumnCount = 2, RowCount = 2, Dock = DockStyle.Fill }; //loob tabeli, millel on kaks rida ja kaks veergu
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 15F));
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 85F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 90F));
@@ -45,9 +45,9 @@ namespace WindowsFormsRakendusteLoomine
             };
             tableLayoutPanel1.Controls.Add(flowLayoutPanel1, 1, 1);
 
-            string[] btnText = { "Näita pilti", "Tühjenda pilt", "Määrake taustavärv", "Sulge" }; 
-            
-            for (int i = 0; i < btnText.Length; i++)
+            string[] btnText = { "Näita pilti", "Tühjenda pilt", "Määrake taustavärv", "Sulge" }; //massiiv nuppude nimedega
+
+            for (int i = 0; i < btnText.Length; i++) //nuppude loomine tsükli kaudu
             {
                 Button btn = new Button
                 {

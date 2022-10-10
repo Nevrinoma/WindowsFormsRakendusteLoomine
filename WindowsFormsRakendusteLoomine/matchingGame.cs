@@ -15,11 +15,14 @@ namespace WindowsFormsRakendusteLoomine
     {
         TableLayoutPanel tableLayoutPanel1;
         Random rnd = new Random();
-        
+        ColorDialog colorDialog1 = new ColorDialog();
         Label firstClicked = null;
         Label secondClicked = null;
         Timer timer1 = new Timer { Interval = 750 };
         string[] btnText = { "lihtne", "keskmine", "raske" };
+
+        public Color bgcolor;
+
         public matchingGame()
         {
             Name = "PiltideMäng";
@@ -29,13 +32,13 @@ namespace WindowsFormsRakendusteLoomine
             ClientSize = new Size(550, 550);
             FormBorderStyle = FormBorderStyle.Fixed3D;
             MaximizeBox = false;
-            
+
             valik();
-            
+
         }
         private void valik() //meetod Valik loob 3 raskusastme nuppu ja nupule klõpsamisel kutsutakse välja raskusmeetod
         {
-            
+
             TableLayoutPanel tableLayoutPanel = new TableLayoutPanel
             {
                 AutoSize = true,
@@ -62,6 +65,16 @@ namespace WindowsFormsRakendusteLoomine
                 tableLayoutPanel.Controls.Add(btnV);
             }
         }
+        public Color varv()
+        {
+            if (colorDialog1.ShowDialog() == DialogResult.OK)
+            {
+               bgcolor = colorDialog1.Color;
+           
+            }
+            return bgcolor;
+            
+        }
         private void difficult(object sender, EventArgs e) 
         {
 
@@ -82,16 +95,18 @@ namespace WindowsFormsRakendusteLoomine
                     {
                         "!", "!", "N", "N"
                     };
+                Color eeee = varv();
                 for (int i = 0; i < 2; i++)
                 {
                     tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25F));
                     tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 25F));
                     for (int j = 0; j < 2; j++)
                     {
-
+                        
                         Label lbl = new Label
                         {
-                            BackColor = Color.CornflowerBlue,
+                            
+                            BackColor = eeee,
                             AutoSize = false,
                             Dock = DockStyle.Fill,
                             TextAlign = ContentAlignment.MiddleCenter,
@@ -123,6 +138,7 @@ namespace WindowsFormsRakendusteLoomine
                     "!", "!", "N", "N", ",", ",", "k", "k",
                     "b", "b", "v", "v", "w", "w", "z", "z"
                 };
+                Color eeee = varv();
                 for (int i = 0; i < 4; i++)
                 {
                     tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25F));
@@ -132,7 +148,7 @@ namespace WindowsFormsRakendusteLoomine
 
                         Label lbl = new Label
                         {
-                            BackColor = Color.CornflowerBlue,
+                            BackColor = eeee,
                             AutoSize = false,
                             Dock = DockStyle.Fill,
                             TextAlign = ContentAlignment.MiddleCenter,
@@ -159,6 +175,7 @@ namespace WindowsFormsRakendusteLoomine
             }
             else if (nupp_sender.Text == "raske")
             {
+                Color eeee = varv();
                 List<string> icons = new List<string>()
                 {
                     "!", "!", "N", "N", ",", ",", "k", "k",
@@ -174,7 +191,7 @@ namespace WindowsFormsRakendusteLoomine
 
                         Label lbl = new Label
                         {
-                            BackColor = Color.CornflowerBlue,
+                            BackColor = eeee,
                             AutoSize = false,
                             Dock = DockStyle.Fill,
                             TextAlign = ContentAlignment.MiddleCenter,
@@ -199,9 +216,6 @@ namespace WindowsFormsRakendusteLoomine
                     iconLabel.Click += label1_Click;
                 }
             }
-            
-
-            
         }
 
         private void label1_Click(object sender, EventArgs e)
