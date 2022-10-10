@@ -61,7 +61,7 @@ namespace WindowsFormsRakendusteLoomine
                     BackColor = Color.LightGoldenrodYellow,
                     Dock = DockStyle.Fill,
                 };
-                btnV.Click += difficult;
+                btnV.Click += raskused;
                 tableLayoutPanel.Controls.Add(btnV);
             }
         }
@@ -75,7 +75,7 @@ namespace WindowsFormsRakendusteLoomine
             return bgcolor;
             
         }
-        private void difficult(object sender, EventArgs e) 
+        private void raskused(object sender, EventArgs e) //meetod raskused mis sõltuvalt valitud raskustest genereerib erineva arvu ridade ja veergudega mängu
         {
 
             this.Controls.Clear();
