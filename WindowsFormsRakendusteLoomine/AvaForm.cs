@@ -43,7 +43,7 @@ namespace WindowsFormsRakendusteLoomine
                     BackColor = Color.LightGoldenrodYellow,
                     Dock = DockStyle.Fill,
                 };
-                btn.Click += Action;
+                btn.Click += Action; // nupp click tegevus
                 tableLayoutPanel1.Controls.Add(btn);
             }
         }
@@ -61,15 +61,15 @@ namespace WindowsFormsRakendusteLoomine
             }
             else if (nupp_sender.Text == "Sulge")
             {
-                Close();
+                Close(); // Sulgeb akna
             }
             else if (nupp_sender.Text == "Matemaatika viktoriin")
             {
-                Matem.ShowDialog();
+                Matem.ShowDialog(); // ava Matemaatika viktoriin
             }
             else if (nupp_sender.Text == "Piltide Mäng")
             {
-                matchingGame.ShowDialog();
+                matchingGame.ShowDialog(); // ava Piltide Mäng
             }
         }
     }
