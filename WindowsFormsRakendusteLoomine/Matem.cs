@@ -19,12 +19,13 @@ namespace WindowsFormsRakendusteLoomine
         NumericUpDown[] numericUpDown = new NumericUpDown[4];// numbriline üles alla
         Random rnd = new Random();
         TableLayoutPanel tableLayoutPanel;
-        Label timelabel;
+        Label timelabel,scorelbl;
         int[] intnum = new int[4];
         int[] intnum2 = new int[4];
         string[] mathsymbol = new string[4] { "+", "-", "*", "/" };
         string text;
         ComboBox mybox;
+        int score;
         public Matem()
         {
             Name = "MatemaatikaViktoriin";
@@ -43,6 +44,19 @@ namespace WindowsFormsRakendusteLoomine
                 Font = new Font("Friendly", 16, FontStyle.Bold)
 
             };
+
+            scorelbl = new Label
+            {
+                Name = "Score",
+                Text="pop",
+                AutoSize = false,
+                BorderStyle = BorderStyle.Fixed3D,
+                Size = new Size(190, 60),
+                Location = new Point(350, 0),
+                Font = new Font("Friendly", 16, FontStyle.Bold)
+
+            };
+            
             tableLayoutPanel = new TableLayoutPanel
             {
                 AutoSize = true,
@@ -138,16 +152,16 @@ namespace WindowsFormsRakendusteLoomine
         }
         int tik = 0;
 
-        private void muusika()
+        private void muusika(object sender, EventArgs e)
         {
-            string[] files = Directory.GetFiles(@"..\..\muusika", "*.wav");
+            string[] files = Directory.GetFiles(@"..\..\muusika", "*.mp3");
             foreach (var item in files)
             {
                 string[] abc = item.Split('\\');
                 mybox.Items.Add(abc[abc.Length - 1]);
             }
         }
-        WindowsMediaPlayer musika = new WindowsMediaPlayer();
+        //WindowsMediaPlayer musika = new WindowsMediaPlayer();
 
         private void Button_Click(object sender, EventArgs e) // Nupp Klõps
         {
@@ -162,6 +176,7 @@ namespace WindowsFormsRakendusteLoomine
         {
             tik++;
             timelabel.Text = "Taimer: " + tik.ToString();
+            scorelbl.Text = "Õige vastud: " + score.ToString();
 
             if (check_ans())
             {
@@ -171,6 +186,15 @@ namespace WindowsFormsRakendusteLoomine
         }
 
 
+        public int rightAns()
+        {
+
+            if (intnum[0] + intnum2[0] == numericUpDown[0].Value || intnum[1] - intnum2[1] == numericUpDown[1].Value || intnum[2] * intnum2[2] == numericUpDown[2].Value || intnum[3] / intnum2[3] == numericUpDown[3].Value)
+            {
+                score++;
+            }
+            return score;
+        }
 
 
         public bool check_ans() //kontrollige vastuseid
