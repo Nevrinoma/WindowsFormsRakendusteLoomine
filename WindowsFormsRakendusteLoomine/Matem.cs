@@ -24,7 +24,6 @@ namespace WindowsFormsRakendusteLoomine
         int[] intnum2 = new int[4];
         string[] mathsymbol = new string[4] { "+", "-", "*", "/" };
         string text;
-        ComboBox mybox;
         int score;
         public Matem()
         {
@@ -73,19 +72,9 @@ namespace WindowsFormsRakendusteLoomine
                 Font = new Font("Friendly", 10)
 
             };
-            Button musicBtn = new Button
-            {
-
-                Text = "Ava musika ugu",
-                Location = new Point(200, 188),
-                Size = new Size(150, 60),
-                Font = new Font("Friendly", 10)
-            };
             timer.Enabled = true;
             button.Click += Button_Click;
             Controls.Add(button);
-            musicBtn.Click += muusika;
-            Controls.Add(musicBtn);
 
 
 
@@ -151,17 +140,6 @@ namespace WindowsFormsRakendusteLoomine
             this.Controls.Add(tableLayoutPanel);
         }
         int tik = 0;
-
-        private void muusika(object sender, EventArgs e)
-        {
-            string[] files = Directory.GetFiles(@"..\..\muusika", "*.mp3");
-            foreach (var item in files)
-            {
-                string[] abc = item.Split('\\');
-                mybox.Items.Add(abc[abc.Length - 1]);
-            }
-        }
-        //WindowsMediaPlayer musika = new WindowsMediaPlayer();
 
         private void Button_Click(object sender, EventArgs e) // Nupp Klõps
         {
