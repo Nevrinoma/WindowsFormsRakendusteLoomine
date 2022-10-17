@@ -107,9 +107,9 @@ namespace WindowsFormsRakendusteLoomine
             timer.Enabled = true;
             button.Click += Button_Click;
             Controls.Add(button);
-            musicBtn.Click += Muusikalul;
+            //musicBtn.Click += Muusikalul;
             Controls.Add(musicBtn);
-            musicBtn2.Click += MuusikaStop;
+            //musicBtn2.Click += MuusikaStop;
             Controls.Add(musicBtn2);
 
 
@@ -177,22 +177,22 @@ namespace WindowsFormsRakendusteLoomine
         }
         int tik = 0;
 
-        private void Muusikalul(object sender, EventArgs e) //mängib ripploendist valitud muusikat
-        {
-            var ind = Directory.GetCurrentDirectory().ToString()
-                .IndexOf("bin", StringComparison.Ordinal);
-            string binFolder =
-                Directory.GetCurrentDirectory().ToString().Substring(0, ind)
-                .ToString();
-            string resourcesFoler = binFolder + "muusika\\";
-            musika.URL = resourcesFoler + mybox.Items[mybox.SelectedIndex].ToString();
-            musika.controls.play();
-        }
-        private void MuusikaStop(object sender, EventArgs e) //lõpetab muusika mängimine
-        {
-            musika.controls.stop();
-        }
-        WindowsMediaPlayer musika = new WindowsMediaPlayer();
+        //private void Muusikalul(object sender, EventArgs e) //mängib ripploendist valitud muusikat
+        //{
+        //    var ind = Directory.GetCurrentDirectory().ToString()
+        //        .IndexOf("bin", StringComparison.Ordinal);
+        //    string binFolder =
+        //        Directory.GetCurrentDirectory().ToString().Substring(0, ind)
+        //        .ToString();
+        //    string resourcesFoler = binFolder + "muusika\\";
+        //    musika.URL = resourcesFoler + mybox.Items[mybox.SelectedIndex].ToString();
+        //    musika.controls.play();
+        //}
+        //private void MuusikaStop(object sender, EventArgs e) //lõpetab muusika mängimine
+        //{
+        //    musika.controls.stop();
+        //}
+        //WindowsMediaPlayer musika = new WindowsMediaPlayer();
 
 
         private void Button_Click(object sender, EventArgs e) // Nupp Klõps
@@ -220,8 +220,19 @@ namespace WindowsFormsRakendusteLoomine
 
         public int rightAns()//lisab iga õige vastuse eest (score)hinde +1 ja tagastab väärtuse
         {
-            
-            if (intnum[0] + intnum2[0] == numericUpDown[0].Value || intnum[1] - intnum2[1] == numericUpDown[1].Value || intnum[2] * intnum2[2] == numericUpDown[2].Value || intnum[3] / intnum2[3] == numericUpDown[3].Value)
+            if (intnum[0] + intnum2[0] == numericUpDown[0].Value)
+            {
+                score++;
+            }
+            else if (intnum[1] - intnum2[1] == numericUpDown[1].Value)
+            {
+                score++;
+            }
+            else if (intnum[2] * intnum2[2] == numericUpDown[2].Value)
+            {
+                score++;
+            }
+            else if (intnum[3] / intnum2[3] == numericUpDown[3].Value)
             {
                 score++;
             }

@@ -117,13 +117,22 @@ namespace WindowsFormsRakendusteLoomine
                 if (colorDialog1.ShowDialog() == DialogResult.OK)
                     pictureBox1.BackColor = colorDialog1.Color;
             }
+            //else if (nupp_sender.Text == "Roheline efekt")
+            //{
+                
+            //}
+
 
             else if (nupp_sender.Text == "Salvesta Pilt")
             {
                 if (pictureBox1.Image != null)
                 {
                     salvesta();
-                    
+                    MessageBox.Show("Pilt oli salvestatud!","Salvestatud");
+                }
+                else if (pictureBox1.Image == null)
+                {
+                    MessageBox.Show("LISA PILT ENNE!", "Noh pek!!!");
                 }
             }
             
