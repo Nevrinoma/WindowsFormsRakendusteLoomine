@@ -13,6 +13,12 @@ valik создает 3 кнопки выбора сложности
 varv открывает color dialog где пользователь выбирает цвет для будущих label
 raskused в зависимости от выбранной сложности генерирует игру с разным количеством рядом и столбцов
 
+
+
+
+
+
+
 Esimene vorm PictureBox:
 timer1_Tick vastutab juhusliku värvi loomise ja pildikasti värvimise eest
 backgroundDance vastutab checkbox2 väärtuse kontrollimise ja värvimuutuste sageduse seadistamise eest
