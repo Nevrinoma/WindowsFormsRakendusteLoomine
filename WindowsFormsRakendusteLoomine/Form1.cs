@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
+using System.Drawing.Imaging;
 
 namespace WindowsFormsRakendusteLoomine
 {
@@ -45,7 +47,7 @@ namespace WindowsFormsRakendusteLoomine
             };
             tableLayoutPanel1.Controls.Add(flowLayoutPanel1, 1, 1);
 
-            string[] btnText = { "Näita pilti", "Tühjenda pilt", "Määrake taustavärv", "Sulge" }; //massiiv nuppude nimedega
+            string[] btnText = { "Näita pilti", "Tühjenda pilt", "Määrake taustavärv", "Sulge","Salvesta Pilt" }; //massiiv nuppude nimedega
 
             for (int i = 0; i < btnText.Length; i++) //nuppude loomine tsükli kaudu
             {
@@ -89,7 +91,7 @@ namespace WindowsFormsRakendusteLoomine
 
             openFileDialog1 = new OpenFileDialog // Failidialoog loomine
             {
-                Filter = "JPEG Files (*.jpg)|*.jpg|PNG Files (*.png)|*.png|BMP Files (*.bmp)|*.bmp|All file" + "s (*.*)|*.*",
+                Filter = "All files (*.*)|*.*|Image Files(*.BMP)|*.BMP|Image Files(*.JPG)|*.JPG|Image Files(*.GIF)|*.GIF|Image Files(*.PNG)|*.PNG",
                 Title = "Select a picture file"
             };
 
@@ -115,6 +117,23 @@ namespace WindowsFormsRakendusteLoomine
                 if (colorDialog1.ShowDialog() == DialogResult.OK)
                     pictureBox1.BackColor = colorDialog1.Color;
             }
+
+            else if (nupp_sender.Text == "Salvesta Pilt")
+            {
+                if (pictureBox1.Image != null)
+                {
+                    Bitmap savepict = new Bitmap(pictureBox1.ClientSize.Width, pictureBox1.ClientSize.Height);
+                    SaveFileDialog SaveDialog = new SaveFileDialog();
+                    SaveDialog.Title = "Salvesta pilt";
+                    SaveDialog.Filter = "Image Files(*.BMP)|*.BMP|Image Files(*.JPG)|*.JPG|Image Files(*.GIF)|*.GIF|Image Files(*.PNG)|*.PNG|All files (*.*)|*.*"; 
+                    if (SaveDialog.ShowDialog() == DialogResult.OK) //если в диалоговом окне нажата кнопка "ОК"
+                    {
+                        pictureBox1.Image.Save(SaveDialog.FileName, System.Drawing.Imaging.ImageFormat.Jpeg);
+                    }
+                    
+                }
+            }
+            
             else if (nupp_sender.Text == "Näita pilti")
             {
                 if (openFileDialog1.ShowDialog() == DialogResult.OK)

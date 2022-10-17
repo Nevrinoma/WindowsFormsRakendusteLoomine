@@ -48,7 +48,7 @@ namespace WindowsFormsRakendusteLoomine
             scorelbl = new Label
             {
                 Name = "Score",
-                Text="pop",
+                Text="",
                 AutoSize = false,
                 BorderStyle = BorderStyle.Fixed3D,
                 Size = new Size(190, 60),
@@ -74,19 +74,43 @@ namespace WindowsFormsRakendusteLoomine
                 Font = new Font("Friendly", 10)
 
             };
+            mybox = new ComboBox
+            {
+                Name = "mybox",
+                Location = new Point(350, 188),
+                Size = new Size(150, 50),
+                DropDownStyle = ComboBoxStyle.DropDown
+            };
+            string[] files = Directory.GetFiles(@"..\..\muusika", "*.wav");
+            foreach (var item in files)
+            {
+                string[] abc = item.Split('\\');
+                mybox.Items.Add(abc[abc.Length - 1]);
+            }
+            Controls.Add(mybox);
             Button musicBtn = new Button
             {
 
-                Text = "Ava musika ugu",
+                Text = "Lüülita muusika",
                 Location = new Point(200, 188),
-                Size = new Size(150, 60),
+                Size = new Size(75, 60),
+                Font = new Font("Friendly", 10)
+            };
+            Button musicBtn2 = new Button
+            {
+
+                Text = "Stop muusika",
+                Location = new Point(275, 188),
+                Size = new Size(75, 60),
                 Font = new Font("Friendly", 10)
             };
             timer.Enabled = true;
             button.Click += Button_Click;
             Controls.Add(button);
-            //musicBtn.Click += muusika;
+            musicBtn.Click += Muusikalul;
             Controls.Add(musicBtn);
+            musicBtn2.Click += MuusikaStop;
+            Controls.Add(musicBtn2);
 
 
 
@@ -153,15 +177,21 @@ namespace WindowsFormsRakendusteLoomine
         }
         int tik = 0;
 
-        //private void muusika(object sender, EventArgs e)
-        //{
-        //    string[] files = Directory.GetFiles(@"..\..\..\muusika", "*.mp3");
-        //    foreach (var item in files)
-        //    {
-        //        string[] abc = item.Split('\\');
-        //        mybox.Items.Add(abc[abc.Length - 1]);
-        //    }
-        //}
+        private void Muusikalul(object sender, EventArgs e)
+        {
+            var ind = Directory.GetCurrentDirectory().ToString()
+                .IndexOf("bin", StringComparison.Ordinal);
+            string binFolder =
+                Directory.GetCurrentDirectory().ToString().Substring(0, ind)
+                .ToString();
+            string resourcesFoler = binFolder + "musiks\\";
+            musika.URL = resourcesFoler + mybox.Items[mybox.SelectedIndex].ToString();
+            musika.controls.play();
+        }
+        private void MuusikaStop(object sender, EventArgs e)
+        {
+            musika.controls.stop();
+        }
         WindowsMediaPlayer musika = new WindowsMediaPlayer();
         private void Button_Click(object sender, EventArgs e) // Nupp Klõps
         {
