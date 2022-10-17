@@ -25,6 +25,7 @@ namespace WindowsFormsRakendusteLoomine
         string[] mathsymbol = new string[4] { "+", "-", "*", "/" };
         string text;
         int score;
+        ComboBox mybox;
         public Matem()
         {
             Name = "MatemaatikaViktoriin";
@@ -39,7 +40,7 @@ namespace WindowsFormsRakendusteLoomine
                 AutoSize = false,
                 BorderStyle = BorderStyle.Fixed3D,
                 Size = new Size(190, 60),
-                Location = new Point(150, 0),
+                Location = new Point(50, 0),
                 Font = new Font("Friendly", 16, FontStyle.Bold)
 
             };
@@ -51,11 +52,12 @@ namespace WindowsFormsRakendusteLoomine
                 AutoSize = false,
                 BorderStyle = BorderStyle.Fixed3D,
                 Size = new Size(190, 60),
-                Location = new Point(350, 0),
+                Location = new Point(250, 0),
                 Font = new Font("Friendly", 16, FontStyle.Bold)
 
             };
-            
+            Controls.Add(scorelbl);
+
             tableLayoutPanel = new TableLayoutPanel
             {
                 AutoSize = true,
@@ -72,9 +74,19 @@ namespace WindowsFormsRakendusteLoomine
                 Font = new Font("Friendly", 10)
 
             };
+            Button musicBtn = new Button
+            {
+
+                Text = "Ava musika ugu",
+                Location = new Point(200, 188),
+                Size = new Size(150, 60),
+                Font = new Font("Friendly", 10)
+            };
             timer.Enabled = true;
             button.Click += Button_Click;
             Controls.Add(button);
+            //musicBtn.Click += muusika;
+            Controls.Add(musicBtn);
 
 
 
@@ -141,6 +153,16 @@ namespace WindowsFormsRakendusteLoomine
         }
         int tik = 0;
 
+        //private void muusika(object sender, EventArgs e)
+        //{
+        //    string[] files = Directory.GetFiles(@"..\..\..\muusika", "*.mp3");
+        //    foreach (var item in files)
+        //    {
+        //        string[] abc = item.Split('\\');
+        //        mybox.Items.Add(abc[abc.Length - 1]);
+        //    }
+        //}
+        WindowsMediaPlayer musika = new WindowsMediaPlayer();
         private void Button_Click(object sender, EventArgs e) // Nupp Klõps
         {
             timer.Start();
@@ -155,7 +177,7 @@ namespace WindowsFormsRakendusteLoomine
             tik++;
             timelabel.Text = "Taimer: " + tik.ToString();
             scorelbl.Text = "Õige vastud: " + score.ToString();
-
+            rightAns();
             if (check_ans())
             {
                 timer.Stop();
@@ -166,7 +188,7 @@ namespace WindowsFormsRakendusteLoomine
 
         public int rightAns()
         {
-
+            
             if (intnum[0] + intnum2[0] == numericUpDown[0].Value || intnum[1] - intnum2[1] == numericUpDown[1].Value || intnum[2] * intnum2[2] == numericUpDown[2].Value || intnum[3] / intnum2[3] == numericUpDown[3].Value)
             {
                 score++;
