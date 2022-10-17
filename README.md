@@ -1,3 +1,5 @@
+Vene Keeles
+
 Первая форма с PictureBox:
 timer1_Tick отвечает за создание случайного цвета и окрашивания picturebox
 backgroundDance отвечает за проверку значения у checkbox2 и настройку частоты смены цвета
@@ -15,7 +17,7 @@ raskused в зависимости от выбранной сложности г
 
 
 
-
+Eesti keeles
 
 
 
