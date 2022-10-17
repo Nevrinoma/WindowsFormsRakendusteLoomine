@@ -23,9 +23,9 @@ namespace WindowsFormsRakendusteLoomine
         int[] intnum = new int[4];
         int[] intnum2 = new int[4];
         string[] mathsymbol = new string[4] { "+", "-", "*", "/" };
-        string text;
-        int score;
-        ComboBox mybox;
+        string text; //tekst
+        int score;// punktid
+        ComboBox mybox; //rippmenüü muusikaloendi jaoks
         public Matem()
         {
             Name = "MatemaatikaViktoriin";
@@ -177,22 +177,24 @@ namespace WindowsFormsRakendusteLoomine
         }
         int tik = 0;
 
-        private void Muusikalul(object sender, EventArgs e)
+        private void Muusikalul(object sender, EventArgs e) //mängib ripploendist valitud muusikat
         {
             var ind = Directory.GetCurrentDirectory().ToString()
                 .IndexOf("bin", StringComparison.Ordinal);
             string binFolder =
                 Directory.GetCurrentDirectory().ToString().Substring(0, ind)
                 .ToString();
-            string resourcesFoler = binFolder + "musiks\\";
+            string resourcesFoler = binFolder + "muusika\\";
             musika.URL = resourcesFoler + mybox.Items[mybox.SelectedIndex].ToString();
             musika.controls.play();
         }
-        private void MuusikaStop(object sender, EventArgs e)
+        private void MuusikaStop(object sender, EventArgs e) //lõpetab muusika mängimine
         {
             musika.controls.stop();
         }
         WindowsMediaPlayer musika = new WindowsMediaPlayer();
+
+
         private void Button_Click(object sender, EventArgs e) // Nupp Klõps
         {
             timer.Start();
@@ -216,7 +218,7 @@ namespace WindowsFormsRakendusteLoomine
         }
 
 
-        public int rightAns()
+        public int rightAns()//lisab iga õige vastuse eest (score)hinde +1 ja tagastab väärtuse
         {
             
             if (intnum[0] + intnum2[0] == numericUpDown[0].Value || intnum[1] - intnum2[1] == numericUpDown[1].Value || intnum[2] * intnum2[2] == numericUpDown[2].Value || intnum[3] / intnum2[3] == numericUpDown[3].Value)

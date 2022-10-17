@@ -70,7 +70,7 @@ namespace WindowsFormsRakendusteLoomine
 
 
 
-        public Color varv()
+        public Color varv()//avab värvidialoogi, kus kasutaja valib tulevaste siltide jaoks värvi
         {
             if (colorDialog1.ShowDialog() == DialogResult.OK)
             {
